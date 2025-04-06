@@ -1,0 +1,33 @@
+class Solution {
+public:
+    int minimumSumSubarray(vector<int>& nums, int l, int r) {
+
+        vector<vector<int>>arr;
+
+
+        for(int i = 0 ; i < nums.size() ; i++){
+            vector<int>num;
+
+            for(int j = i ; j < nums.size() ; j++){
+
+                num.push_back(nums[j]);
+                if(num.size() >= l && num.size() <= r){
+                    arr.push_back(num);
+                }
+            }
+        }
+
+         int mini = INT_MAX;
+          for(auto i : arr){
+            int c = 0;
+
+            for(auto j : i){
+                c += j;
+            }
+            if(c > 0)
+            mini = min(mini , c);
+          }
+          
+        return (mini == INT_MAX)? -1 : mini;
+    }
+};
